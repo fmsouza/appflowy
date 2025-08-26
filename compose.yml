@@ -54,9 +54,10 @@ services:
         condition: service_healthy
     healthcheck:
       test: "curl --fail http://127.0.0.1:9999/health || exit 1"
-      interval: 5s
+      interval: 10s
       timeout: 5s
-      retries: 12
+      retries: 5
+      start_period: 120s
     environment:
       # There are a lot of options to configure GoTrue. You can reference the example config:
       # https://github.com/supabase/auth/blob/master/example.env
