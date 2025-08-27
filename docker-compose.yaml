@@ -10,6 +10,9 @@ services:
     image: nginx
     volumes:
       - ./nginx:/etc/nginx
+    environment:
+      - SERVICE_FQDN_APPFLOWY_8080
+      - SERVICE_FQDN_APPFLOWY_8443
 
   # You do not need this if you have configured to use your own s3 file storage
   minio:
