@@ -11,8 +11,12 @@ services:
     volumes:
       - ./nginx:/etc/nginx
     environment:
-      - SERVICE_FQDN_APPFLOWY_8080
-      - SERVICE_FQDN_APPFLOWY_8443
+      - NGINX_PORT
+      - NGINX_TLS_PORT
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.appflowy.rule=Host(`notes.fredsouza.photography`)"
+      - "traefik.http.services.appflowy.loadbalancer.server.port=80"
 
   # You do not need this if you have configured to use your own s3 file storage
   minio:
